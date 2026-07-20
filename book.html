@@ -128,13 +128,13 @@
     </div>
 
     <button class="btn" type="submit">Start My Salt Drop →</button>
-    <div class="micro">No contracts · Cancel anytime · Payment set up on your first visit<br>Prefer to text? <a href="sms:+12085305009">(208) 530-5009</a></div>
+    <div class="micro">No contracts · Cancel anytime · Payment set up on your first visit<br>Prefer to text? <a href="sms:+12085894506">(208) 589-4506</a></div>
   </form>
 
   <div class="ok" id="ok">
     <h2>🎉 You're in!</h2>
     <p>We got your signup and we'll text you shortly to confirm your plan and schedule your first fill.</p>
-    <p style="margin-top:10px">Questions right now? Text <a href="sms:+12085305009">(208) 530-5009</a>.</p>
+    <p style="margin-top:10px">Questions right now? Text <a href="sms:+12085894506">(208) 589-4506</a>.</p>
   </div>
 </div>
 
@@ -162,7 +162,7 @@ document.getElementById('signup').addEventListener('submit', async e => {
   e.preventDefault();
   const f = e.target;
   if (W3KEY.startsWith('PASTE')) {
-    alert("Online signup is almost ready! For now, text us at (208) 530-5009 and we'll get you set up.");
+    alert("Online signup is almost ready! For now, text us at (208) 589-4506 and we'll get you set up.");
     return;
   }
   const data = new FormData(f);
@@ -178,7 +178,7 @@ document.getElementById('signup').addEventListener('submit', async e => {
     else throw new Error(out.message || 'send failed');
   } catch (err) {
     btn.disabled = false; btn.textContent = 'Start My Salt Drop →';
-    alert("Hmm, that didn't go through. Please text us instead: (208) 530-5009");
+    alert("Hmm, that didn't go through. Please text us instead: (208) 589-4506");
   }
 });
 </script>
