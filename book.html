@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up — Salt Drop | Water Softener Salt Delivery, East Idaho</title>
+<meta name="description" content="Sign up for Salt Drop in 2 minutes — pick a plan, tell us where your softener lives, and we handle the rest.">
+<link rel="canonical" href="https://saltdropidaho.com/book.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sign Up — Salt Drop | Water Softener Salt Delivery">
+<meta property="og:description" content="Pick a plan, tell us where your softener lives — we handle the rest. From $25/mo, no contracts.">
+<meta property="og:url" content="https://saltdropidaho.com/book.html">
+<meta property="og:image" content="https://saltdropidaho.com/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/salt-drop-icon.png">
+<style>
+  :root{
+    --brand:#0a0a0a; --brand-2:#151515; --accent:#00a9ff; --accent-dark:#0088d1;
+    --bg:#f7fafc; --card:#ffffff; --ink:#101418; --ink-soft:#5a6b76; --line:#e2e9ee;
+    --radius:14px; --shadow:0 10px 30px rgba(10,10,10,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+  a{color:var(--accent-dark);text-decoration:none}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  header{background:var(--brand);padding:12px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:0 20px}
+  .logo{display:flex;align-items:center;gap:11px;color:#fff;font-weight:800;font-size:1.2rem;letter-spacing:1px}
+  .logo img{width:32px}
+  .logo em{font-style:normal;color:var(--accent)}
+  .nav a.back{color:#cfd8de;font-weight:600;font-size:.95rem}
+  .head{background:linear-gradient(165deg,var(--brand),var(--brand-2));color:#fff;text-align:center;padding:44px 20px 38px}
+  .head h1{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:900}
+  .head p{color:#c3d2db;margin-top:6px}
+  form{padding:38px 0 70px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;margin-bottom:22px}
+  .card h2{font-size:1.05rem;letter-spacing:1px;text-transform:uppercase;color:var(--accent-dark);margin-bottom:16px}
+  /* frequency toggle */
+  .freq{display:flex;gap:10px;margin-bottom:18px}
+  .freq label{flex:1;text-align:center;border:2px solid var(--line);border-radius:999px;padding:10px;font-weight:700;cursor:pointer;color:var(--ink-soft)}
+  .freq input{display:none}
+  .freq input:checked + span{color:var(--accent-dark)}
+  .freq label:has(input:checked){border-color:var(--accent);color:var(--accent-dark);background:rgba(0,169,255,.06)}
+  /* plan cards */
+  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+  .plan{border:2px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center;cursor:pointer}
+  .plan input{display:none}
+  .plan:has(input:checked){border-color:var(--accent);background:rgba(0,169,255,.06)}
+  .plan .nm{font-weight:800;letter-spacing:.5px}
+  .plan .pr{font-size:1.6rem;font-weight:900;color:var(--brand);margin:4px 0 2px}
+  .plan .pr span{font-size:.85rem;color:var(--ink-soft);font-weight:600}
+  .plan .d{font-size:.85rem;color:var(--ink-soft)}
+  /* fields */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .field{margin-bottom:14px}
+  label.lbl{display:block;font-weight:700;font-size:.9rem;margin-bottom:5px}
+  input[type=text],input[type=tel],select,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--accent)}
+  .btn{display:inline-block;width:100%;background:var(--accent);color:#04141f;font-weight:800;padding:16px;border-radius:999px;border:none;cursor:pointer;font-size:1.1rem;transition:.15s}
+  .btn:hover{background:var(--accent-dark);color:#fff}
+  .micro{text-align:center;color:var(--ink-soft);font-size:.9rem;margin-top:14px}
+  .ok{display:none;text-align:center;background:var(--card);border:2px solid var(--accent);border-radius:var(--radius);padding:44px 28px;box-shadow:var(--shadow)}
+  .ok h2{font-size:1.5rem;margin-bottom:8px}
+  .ok p{color:var(--ink-soft)}
+  @media(max-width:560px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="logo"><img src="assets/salt-drop-icon.png" alt="Salt Drop">SALT&nbsp;<em>DROP</em></a>
+    <a class="back" href="index.html">← Back to site</a>
+  </div>
+</header>
+
+<div class="head">
+  <h1>Sign up in 2 minutes</h1>
+  <p>Pick a plan, tell us where your softener lives — we'll text you to confirm your first fill.</p>
+</div>
+
+<div class="wrap">
+  <form id="signup">
+    <div class="card">
+      <h2>1 · Pick your plan</h2>
+      <div class="freq">
+        <label><input type="radio" name="frequency" value="Monthly" checked><span>Monthly</span></label>
+        <label><input type="radio" name="frequency" value="Every other month"><span>Every other month</span></label>
+      </div>
+      <div class="plans">
+        <label class="plan"><input type="radio" name="plan" value="Basic">
+          <div class="nm">BASIC</div><div class="pr" data-mo="$25" data-eom="$29">$25<span class="unit">/mo</span></div><div class="d">1 bag included</div>
+        </label>
+        <label class="plan"><input type="radio" name="plan" value="Family" checked>
+          <div class="nm">FAMILY ⭐</div><div class="pr" data-mo="$35" data-eom="$39">$35<span class="unit">/mo</span></div><div class="d">Up to 2 bags included</div>
+        </label>
+        <label class="plan"><input type="radio" name="plan" value="Large Home">
+          <div class="nm">LARGE</div><div class="pr" data-mo="$45" data-eom="$49">$45<span class="unit">/mo</span></div><div class="d">Up to 3 bags included</div>
+        </label>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>2 · Your info</h2>
+      <div class="grid2">
+        <div class="field"><label class="lbl">Name</label><input type="text" name="name" required placeholder="First & last name"></div>
+        <div class="field"><label class="lbl">Phone (we'll text to confirm)</label><input type="tel" name="phone" required placeholder="(208) 555-1234"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label class="lbl">Street address</label><input type="text" name="address" required placeholder="123 Main St"></div>
+        <div class="field"><label class="lbl">Town</label>
+          <select name="town" required>
+            <option value="">Select…</option>
+            <option>Rigby</option><option>Idaho Falls</option><option>Ammon</option><option>Rexburg</option><option>Other East Idaho</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label class="lbl">Where's the softener?</label>
+          <select name="softener_location" required>
+            <option value="">Select…</option>
+            <option>Garage</option><option>Basement</option><option>Utility / laundry room</option><option>Crawl space</option><option>Not sure</option>
+          </select>
+        </div>
+        <div class="field"><label class="lbl">Access if you're not home (optional)</label><input type="text" name="access" placeholder="Garage code, side door, etc."></div>
+      </div>
+      <div class="field"><label class="lbl">Anything else? (optional)</label><textarea name="notes" rows="3" placeholder="Well water, extra-hard water, big tank, dog in the yard…"></textarea></div>
+    </div>
+
+    <button class="btn" type="submit">Start My Salt Drop →</button>
+    <div class="micro">No contracts · Cancel anytime · Payment set up on your first visit<br>Prefer to text? <a href="sms:+12085305009">(208) 530-5009</a></div>
+  </form>
+
+  <div class="ok" id="ok">
+    <h2>🎉 You're in!</h2>
+    <p>We got your signup and we'll text you shortly to confirm your plan and schedule your first fill.</p>
+    <p style="margin-top:10px">Questions right now? Text <a href="sms:+12085305009">(208) 530-5009</a>.</p>
+  </div>
+</div>
+
+<script>
+const W3KEY = '5ddcac4d-87f2-4c7a-aaf6-d50703d66010'; // key tied to saltdropidaho@gmail.com
+
+// frequency toggle updates plan prices
+document.querySelectorAll('input[name=frequency]').forEach(r => r.addEventListener('change', () => {
+  const eom = document.querySelector('input[name=frequency]:checked').value !== 'Monthly';
+  document.querySelectorAll('.plan .pr').forEach(p => {
+    p.childNodes[0].nodeValue = eom ? p.dataset.eom : p.dataset.mo;
+    p.querySelector('.unit').textContent = eom ? '/visit' : '/mo';
+  });
+}));
+
+// preselect plan from ?plan= link
+const pre = new URLSearchParams(location.search).get('plan');
+if (pre) {
+  const el = document.querySelector(`input[name=plan][value="${pre}"]`) ||
+             [...document.querySelectorAll('input[name=plan]')].find(i => i.value.toLowerCase().startsWith(pre.toLowerCase()));
+  if (el) el.checked = true;
+}
+
+document.getElementById('signup').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target;
+  if (W3KEY.startsWith('PASTE')) {
+    alert("Online signup is almost ready! For now, text us at (208) 530-5009 and we'll get you set up.");
+    return;
+  }
+  const data = new FormData(f);
+  data.append('access_key', W3KEY);
+  data.append('subject', `NEW SALT DROP SIGNUP — ${data.get('plan')} (${data.get('frequency')}) — ${data.get('town')}`);
+  data.append('from_name', 'Salt Drop Website');
+  const btn = f.querySelector('.btn');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+    const out = await res.json();
+    if (out.success) { f.style.display = 'none'; document.getElementById('ok').style.display = 'block'; window.scrollTo(0, 0); }
+    else throw new Error(out.message || 'send failed');
+  } catch (err) {
+    btn.disabled = false; btn.textContent = 'Start My Salt Drop →';
+    alert("Hmm, that didn't go through. Please text us instead: (208) 530-5009");
+  }
+});
+</script>
+</body>
+</html>
