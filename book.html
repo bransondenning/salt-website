@@ -13,55 +13,72 @@
 <meta property="og:image" content="https://saltdropidaho.com/assets/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="assets/salt-drop-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --brand:#0a0a0a; --brand-2:#151515; --accent:#00a9ff; --accent-dark:#0088d1;
-    --bg:#f7fafc; --card:#ffffff; --ink:#101418; --ink-soft:#5a6b76; --line:#e2e9ee;
-    --radius:14px; --shadow:0 10px 30px rgba(10,10,10,.10);
+    --bg0:#05070a; --glass:rgba(255,255,255,.035); --glass-b:rgba(0,169,255,.16);
+    --accent:#00a9ff; --accent2:#0066ff; --ink:#e9f1f7; --mut:#8fa3b2; --radius:18px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
-  a{color:var(--accent-dark);text-decoration:none}
-  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
-  header{background:var(--brand);padding:12px 0}
-  .nav{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:0 20px}
-  .logo{display:flex;align-items:center;gap:11px;color:#fff;font-weight:800;font-size:1.2rem;letter-spacing:1px}
-  .logo img{width:32px}
-  .logo em{font-style:normal;color:var(--accent)}
-  .nav a.back{color:#cfd8de;font-weight:600;font-size:.95rem}
-  .head{background:linear-gradient(165deg,var(--brand),var(--brand-2));color:#fff;text-align:center;padding:44px 20px 38px}
-  .head h1{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:900}
-  .head p{color:#c3d2db;margin-top:6px}
-  form{padding:38px 0 70px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;margin-bottom:22px}
-  .card h2{font-size:1.05rem;letter-spacing:1px;text-transform:uppercase;color:var(--accent-dark);margin-bottom:16px}
-  /* frequency toggle */
-  .freq{display:flex;gap:10px;margin-bottom:18px}
-  .freq label{flex:1;text-align:center;border:2px solid var(--line);border-radius:999px;padding:10px;font-weight:700;cursor:pointer;color:var(--ink-soft)}
+  body{font-family:'Inter','Segoe UI',system-ui,sans-serif;color:var(--ink);line-height:1.65;
+    background:
+      radial-gradient(800px 420px at 85% -80px, rgba(0,169,255,.13), transparent 60%),
+      radial-gradient(600px 420px at -10% 40%, rgba(0,102,255,.07), transparent 60%),
+      var(--bg0)}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+    background-size:56px 56px;
+    mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 30%,transparent 75%)}
+  a{color:var(--accent);text-decoration:none}
+  h1,h2,.logo{font-family:'Space Grotesk','Inter',sans-serif}
+  .wrap{max-width:780px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+  header{background:rgba(5,7,10,.65);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06);padding:13px 0;position:sticky;top:0;z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;max-width:1120px;margin:0 auto;padding:0 22px}
+  .logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:1.18rem;letter-spacing:1.5px}
+  .logo img{width:30px;filter:drop-shadow(0 0 10px rgba(0,169,255,.55))}
+  .logo em{font-style:normal;background:linear-gradient(90deg,var(--accent),#7fd4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .nav a.back{color:var(--mut);font-weight:600;font-size:.93rem;transition:.2s}
+  .nav a.back:hover{color:#fff}
+  .head{text-align:center;padding:52px 20px 40px}
+  .head h1{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:700;letter-spacing:-.4px}
+  .head p{color:var(--mut);margin-top:8px}
+  form{padding:6px 0 80px}
+  .card{background:var(--glass);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);backdrop-filter:blur(10px);padding:30px;margin-bottom:22px}
+  .card h2{font-size:.95rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+  .freq{display:flex;gap:10px;margin-bottom:20px}
+  .freq label{flex:1;text-align:center;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:11px;font-weight:700;cursor:pointer;color:var(--mut);transition:.25s;background:rgba(255,255,255,.02)}
   .freq input{display:none}
-  .freq input:checked + span{color:var(--accent-dark)}
-  .freq label:has(input:checked){border-color:var(--accent);color:var(--accent-dark);background:rgba(0,169,255,.06)}
-  /* plan cards */
+  .freq label:has(input:checked){border-color:var(--accent);color:#fff;background:rgba(0,169,255,.1);box-shadow:0 0 18px rgba(0,169,255,.18)}
   .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-  .plan{border:2px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center;cursor:pointer}
+  .plan{border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:20px;text-align:center;cursor:pointer;transition:.25s;background:rgba(255,255,255,.02)}
+  .plan:hover{transform:translateY(-3px)}
   .plan input{display:none}
-  .plan:has(input:checked){border-color:var(--accent);background:rgba(0,169,255,.06)}
-  .plan .nm{font-weight:800;letter-spacing:.5px}
-  .plan .pr{font-size:1.6rem;font-weight:900;color:var(--brand);margin:4px 0 2px}
-  .plan .pr span{font-size:.85rem;color:var(--ink-soft);font-weight:600}
-  .plan .d{font-size:.85rem;color:var(--ink-soft)}
-  /* fields */
+  .plan:has(input:checked){border-color:var(--accent);background:rgba(0,169,255,.08);box-shadow:0 0 0 1px rgba(0,169,255,.35), 0 10px 30px rgba(0,102,255,.15)}
+  .plan .nm{font-weight:800;letter-spacing:1px;font-size:.9rem}
+  .plan .pr{font-family:'Space Grotesk';font-size:1.7rem;font-weight:700;color:#fff;margin:6px 0 2px}
+  .plan .pr span{font-size:.85rem;color:var(--mut);font-weight:600;font-family:'Inter'}
+  .plan .d{font-size:.84rem;color:var(--mut)}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .field{margin-bottom:14px}
-  label.lbl{display:block;font-weight:700;font-size:.9rem;margin-bottom:5px}
-  input[type=text],input[type=tel],select,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff}
-  input:focus,select:focus,textarea:focus{outline:2px solid var(--accent)}
-  .btn{display:inline-block;width:100%;background:var(--accent);color:#04141f;font-weight:800;padding:16px;border-radius:999px;border:none;cursor:pointer;font-size:1.1rem;transition:.15s}
-  .btn:hover{background:var(--accent-dark);color:#fff}
-  .micro{text-align:center;color:var(--ink-soft);font-size:.9rem;margin-top:14px}
-  .ok{display:none;text-align:center;background:var(--card);border:2px solid var(--accent);border-radius:var(--radius);padding:44px 28px;box-shadow:var(--shadow)}
-  .ok h2{font-size:1.5rem;margin-bottom:8px}
-  .ok p{color:var(--ink-soft)}
+  label.lbl{display:block;font-weight:700;font-size:.88rem;margin-bottom:6px}
+  input[type=text],input[type=tel],select,textarea{width:100%;padding:13px 15px;border:1px solid rgba(255,255,255,.14);border-radius:11px;font-size:1rem;font-family:inherit;
+    background:rgba(255,255,255,.045);color:var(--ink);transition:.2s}
+  select option{background:#0a0f16;color:var(--ink)}
+  input::placeholder,textarea::placeholder{color:#5d707d}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,169,255,.18)}
+  .btn{display:inline-block;width:100%;font-weight:800;padding:17px;border-radius:999px;border:none;cursor:pointer;font-size:1.08rem;
+    color:#021019;background:linear-gradient(135deg,#35c3ff,var(--accent) 45%,var(--accent2));
+    box-shadow:0 6px 26px rgba(0,169,255,.35), inset 0 1px 0 rgba(255,255,255,.35);
+    transition:transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,169,255,.5), inset 0 1px 0 rgba(255,255,255,.35)}
+  .btn:disabled{opacity:.6;transform:none;cursor:wait}
+  .micro{text-align:center;color:var(--mut);font-size:.9rem;margin-top:16px}
+  .ok{display:none;text-align:center;background:var(--glass);border:1px solid rgba(0,169,255,.45);border-radius:var(--radius);padding:50px 30px;margin-bottom:60px;
+    box-shadow:0 0 0 1px rgba(0,169,255,.2), 0 20px 50px rgba(0,102,255,.15);backdrop-filter:blur(10px)}
+  .ok h2{font-size:1.6rem;margin-bottom:10px;letter-spacing:normal;text-transform:none;color:#fff}
+  .ok p{color:var(--mut)}
   @media(max-width:560px){.grid2{grid-template-columns:1fr}}
 </style>
 </head>
@@ -161,10 +178,6 @@ if (pre) {
 document.getElementById('signup').addEventListener('submit', async e => {
   e.preventDefault();
   const f = e.target;
-  if (W3KEY.startsWith('PASTE')) {
-    alert("Online signup is almost ready! For now, text us at (208) 589-4506 and we'll get you set up.");
-    return;
-  }
   const data = new FormData(f);
   data.append('access_key', W3KEY);
   data.append('subject', `NEW SALT DROP SIGNUP — ${data.get('plan')} (${data.get('frequency')}) — ${data.get('town')}`);

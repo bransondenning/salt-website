@@ -16,6 +16,9 @@
 <meta name="twitter:description" content="We deliver the salt, check your brine tank, and fill it for you — from $25/mo. No contracts.">
 <meta name="twitter:image" content="https://saltdropidaho.com/assets/og-image.jpg">
 <link rel="icon" type="image/png" href="assets/salt-drop-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -51,124 +54,163 @@
 }
 </script>
 <style>
-  /* ============================================================
-     SALT DROP THEME — black / white / electric blue
-     ============================================================ */
   :root{
-    --brand:       #0a0a0a;   /* black                */
-    --brand-2:     #151515;   /* soft black step      */
-    --accent:      #00a9ff;   /* electric blue        */
-    --accent-dark: #0088d1;
-    --bg:          #f7fafc;   /* near-white           */
-    --card:        #ffffff;
-    --ink:         #101418;   /* body text            */
-    --ink-soft:    #5a6b76;
-    --line:        #e2e9ee;
-    --radius: 14px;
-    --shadow: 0 10px 30px rgba(10,10,10,.10);
+    --bg0:#05070a;            /* page background          */
+    --bg1:#0a0f16;            /* raised panel             */
+    --glass:rgba(255,255,255,.035);
+    --glass-b:rgba(0,169,255,.16);
+    --accent:#00a9ff;
+    --accent2:#0066ff;
+    --ink:#e9f1f7;
+    --mut:#8fa3b2;
+    --radius:18px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+  body{
+    font-family:'Inter','Segoe UI',system-ui,sans-serif;color:var(--ink);line-height:1.65;
+    background:
+      radial-gradient(900px 500px at 85% -100px, rgba(0,169,255,.13), transparent 60%),
+      radial-gradient(700px 500px at -10% 30%, rgba(0,102,255,.08), transparent 60%),
+      var(--bg0);
+  }
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+    background-size:56px 56px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%);
+  }
   img{max-width:100%;display:block}
-  a{color:var(--accent-dark);text-decoration:none}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+  h1,h2,h3,.logo,.plan .price{font-family:'Space Grotesk','Inter',sans-serif}
 
   /* ---------- header ---------- */
-  header{position:sticky;top:0;z-index:50;background:var(--brand);box-shadow:0 2px 14px rgba(0,0,0,.28)}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-  .logo{display:flex;align-items:center;gap:11px;color:#fff;font-weight:800;font-size:1.25rem;letter-spacing:1px}
-  .logo img{width:34px;height:auto}
-  .logo em{font-style:normal;color:var(--accent)}
-  .nav-links{display:flex;gap:26px;align-items:center}
-  .nav-links a{color:#cfd8de;font-weight:600;font-size:.95rem}
+  header{position:fixed;top:0;left:0;right:0;z-index:60;transition:.3s;
+    background:rgba(5,7,10,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,.06)}
+  header.sc{background:rgba(5,7,10,.85);border-bottom-color:rgba(0,169,255,.18)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .logo{display:flex;align-items:center;gap:11px;color:#fff;font-weight:700;font-size:1.28rem;letter-spacing:1.5px}
+  .logo img{width:32px;filter:drop-shadow(0 0 10px rgba(0,169,255,.55))}
+  .logo em{font-style:normal;background:linear-gradient(90deg,var(--accent),#7fd4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{color:var(--mut);font-weight:600;font-size:.94rem;transition:.2s}
   .nav-links a:hover{color:#fff}
-  .btn{display:inline-block;background:var(--accent);color:#04141f;font-weight:800;padding:12px 26px;border-radius:999px;border:none;cursor:pointer;font-size:1rem;transition:.15s}
-  .btn:hover{background:var(--accent-dark);color:#fff;transform:translateY(-1px)}
-  .btn.ghost{background:transparent;color:#fff;border:2px solid var(--accent)}
-  .btn.big{font-size:1.1rem;padding:15px 34px}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-block;font-weight:800;padding:14px 30px;border-radius:999px;border:none;cursor:pointer;font-size:1rem;
+    color:#021019;background:linear-gradient(135deg,#35c3ff,var(--accent) 45%,var(--accent2));
+    box-shadow:0 6px 26px rgba(0,169,255,.35), inset 0 1px 0 rgba(255,255,255,.35);
+    transition:transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,169,255,.5), inset 0 1px 0 rgba(255,255,255,.35)}
+  .btn.ghost{background:rgba(255,255,255,.05);color:#fff;border:1px solid rgba(0,169,255,.45);box-shadow:none;backdrop-filter:blur(6px)}
+  .btn.ghost:hover{background:rgba(0,169,255,.12);box-shadow:0 8px 26px rgba(0,169,255,.2)}
+  .btn.big{font-size:1.08rem;padding:16px 36px}
+  .btn.sm{padding:11px 24px;font-size:.92rem}
 
   /* ---------- hero ---------- */
-  .hero{background:linear-gradient(165deg,var(--brand) 0%,var(--brand-2) 55%,#10181d 100%);color:#fff;padding:80px 0 70px;text-align:center;position:relative;overflow:hidden}
-  .hero::after{content:"";position:absolute;inset:auto -10% -55% -10%;height:70%;background:radial-gradient(ellipse at center,rgba(0,169,255,.22),transparent 65%)}
-  .hero .kicker{display:inline-block;background:rgba(0,169,255,.12);border:1px solid rgba(0,169,255,.5);color:#7fd4ff;font-weight:700;letter-spacing:2px;font-size:.8rem;padding:7px 18px;border-radius:999px;margin-bottom:22px;text-transform:uppercase}
-  .hero h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.12;font-weight:900;max-width:820px;margin:0 auto 18px}
-  .hero h1 em{font-style:normal;color:var(--accent)}
-  .hero p.sub{font-size:1.15rem;color:#c3d2db;max-width:640px;margin:0 auto 32px}
-  .hero .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
-  .hero .micro{margin-top:18px;font-size:.9rem;color:#8ba1ad}
+  .hero{padding:150px 0 90px;text-align:center;position:relative;overflow:hidden}
+  .hero .drop-ic{width:86px;margin:0 auto 26px;animation:float 5.5s ease-in-out infinite;filter:drop-shadow(0 14px 34px rgba(0,169,255,.45))}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  .kicker{display:inline-block;background:rgba(0,169,255,.09);border:1px solid rgba(0,169,255,.4);color:#7fd4ff;font-weight:700;letter-spacing:2.5px;font-size:.76rem;padding:8px 20px;border-radius:999px;margin-bottom:24px;text-transform:uppercase}
+  .hero h1{font-size:clamp(2.2rem,5.6vw,3.9rem);line-height:1.08;font-weight:700;max-width:860px;margin:0 auto 20px;letter-spacing:-.5px}
+  .hero h1 em{font-style:normal;background:linear-gradient(90deg,#35c3ff,var(--accent) 50%,#66d0ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.sub{font-size:1.16rem;color:var(--mut);max-width:620px;margin:0 auto 34px}
+  .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:46px}
+  .stat{background:var(--glass);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px 26px;backdrop-filter:blur(8px)}
+  .stat b{display:block;font-family:'Space Grotesk';font-size:1.35rem;color:var(--accent)}
+  .stat span{font-size:.83rem;color:var(--mut)}
 
   /* ---------- sections ---------- */
-  section{padding:64px 0}
-  .sec-head{text-align:center;max-width:660px;margin:0 auto 42px}
-  .sec-head .tag{color:var(--accent-dark);font-weight:800;letter-spacing:2px;font-size:.8rem;text-transform:uppercase}
-  .sec-head h2{font-size:clamp(1.6rem,3.5vw,2.3rem);font-weight:900;margin:6px 0 10px}
-  .sec-head p{color:var(--ink-soft)}
+  section{padding:84px 0}
+  .sec-head{text-align:center;max-width:660px;margin:0 auto 52px}
+  .tag{color:var(--accent);font-weight:800;letter-spacing:3px;font-size:.76rem;text-transform:uppercase}
+  .sec-head h2{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:700;margin:10px 0 12px;letter-spacing:-.4px}
+  .sec-head p{color:var(--mut)}
 
-  /* how it works */
-  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
-  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;box-shadow:var(--shadow);text-align:center}
-  .step .num{width:46px;height:46px;border-radius:50%;background:var(--brand);color:var(--accent);font-weight:900;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-  .step h3{font-size:1.15rem;margin-bottom:8px}
-  .step p{color:var(--ink-soft);font-size:.97rem}
+  .card{background:var(--glass);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    transition:transform .35s cubic-bezier(.16,1,.3,1), border-color .35s, box-shadow .35s}
+  .card:hover{transform:translateY(-6px);border-color:var(--glass-b);box-shadow:0 18px 44px rgba(0,0,0,.45), 0 0 0 1px rgba(0,169,255,.12)}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+  .step{padding:34px 28px;text-align:center}
+  .step .num{width:52px;height:52px;border-radius:16px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk';font-weight:700;font-size:1.25rem;color:#04141f;
+    background:linear-gradient(135deg,#35c3ff,var(--accent2));box-shadow:0 8px 22px rgba(0,169,255,.35)}
+  .step h3{font-size:1.16rem;margin-bottom:8px}
+  .step p{color:var(--mut);font-size:.96rem}
 
   /* pricing */
-  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;align-items:stretch}
-  .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px 28px;box-shadow:var(--shadow);text-align:center;display:flex;flex-direction:column}
-  .plan.feature{border:2px solid var(--accent);position:relative}
-  .plan.feature .flag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#04141f;font-weight:800;font-size:.75rem;letter-spacing:1px;padding:5px 16px;border-radius:999px;text-transform:uppercase}
-  .plan h3{font-size:1.1rem;letter-spacing:.5px}
-  .plan .price{font-size:2.6rem;font-weight:900;color:var(--brand);margin:10px 0 2px}
-  .plan .price span{font-size:1rem;color:var(--ink-soft);font-weight:600}
-  .plan ul{list-style:none;margin:18px 0 26px;text-align:left;flex:1}
-  .plan li{padding:7px 0 7px 30px;position:relative;color:var(--ink-soft);font-size:.96rem}
-  .plan li::before{content:"✓";position:absolute;left:4px;color:var(--accent-dark);font-weight:900}
-  .eom{max-width:760px;margin:26px auto 0;background:var(--brand);color:#dbe7ee;border-radius:var(--radius);padding:20px 26px;text-align:center;box-shadow:var(--shadow)}
-  .eom b{color:var(--accent)}
-  .price-note{text-align:center;color:var(--ink-soft);font-size:.9rem;margin-top:18px}
+  .toggle{display:flex;justify-content:center;margin-bottom:40px}
+  .toggle .tg{display:flex;background:var(--glass);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:5px;backdrop-filter:blur(8px)}
+  .tg button{border:none;background:transparent;color:var(--mut);font-weight:700;font-size:.93rem;padding:10px 24px;border-radius:999px;cursor:pointer;transition:.25s;font-family:'Inter'}
+  .tg button.on{background:linear-gradient(135deg,#35c3ff,var(--accent2));color:#04141f;box-shadow:0 4px 16px rgba(0,169,255,.4)}
+  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:22px;align-items:stretch}
+  .plan{padding:36px 30px;text-align:center;display:flex;flex-direction:column;position:relative}
+  .plan.feature{border-color:rgba(0,169,255,.5);box-shadow:0 0 0 1px rgba(0,169,255,.3), 0 20px 50px rgba(0,102,255,.18)}
+  .plan.feature .flag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;
+    background:linear-gradient(135deg,#35c3ff,var(--accent2));color:#04141f;font-weight:800;font-size:.72rem;letter-spacing:1.5px;padding:6px 18px;border-radius:999px;text-transform:uppercase;box-shadow:0 6px 18px rgba(0,169,255,.4)}
+  .plan h3{font-size:1rem;letter-spacing:2px;color:var(--mut)}
+  .plan .price{font-size:3rem;font-weight:700;margin:12px 0 2px;color:#fff;transition:.2s}
+  .plan .price span{font-size:1rem;color:var(--mut);font-weight:600;font-family:'Inter'}
+  .plan ul{list-style:none;margin:20px 0 28px;text-align:left;flex:1}
+  .plan li{padding:7px 0 7px 32px;position:relative;color:var(--mut);font-size:.95rem}
+  .plan li::before{content:"✓";position:absolute;left:4px;color:var(--accent);font-weight:900}
+  .price-note{text-align:center;color:var(--mut);font-size:.9rem;margin-top:26px}
 
   /* why */
-  .why{background:var(--brand);color:#fff}
-  .why .sec-head h2{color:#fff}
-  .why .sec-head p{color:#aebfc9}
-  .why .sec-head .tag{color:var(--accent)}
-  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
-  .why-card{background:rgba(255,255,255,.05);border:1px solid rgba(0,169,255,.28);border-radius:var(--radius);padding:26px 22px}
-  .why-card .ic{font-size:1.7rem;margin-bottom:10px}
-  .why-card h3{font-size:1.05rem;margin-bottom:6px;color:#eef6fb}
-  .why-card p{font-size:.94rem;color:#aebfc9}
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .why-card{padding:30px 26px}
+  .why-card .ic{font-size:1.8rem;margin-bottom:12px;filter:drop-shadow(0 0 12px rgba(0,169,255,.3))}
+  .why-card h3{font-size:1.08rem;margin-bottom:7px}
+  .why-card p{font-size:.94rem;color:var(--mut)}
 
   /* area */
   .area-pills{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-  .pill{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 22px;font-weight:700;color:var(--brand);box-shadow:var(--shadow)}
+  .pill{background:var(--glass);border:1px solid rgba(0,169,255,.25);border-radius:999px;padding:11px 26px;font-weight:700;color:var(--ink);backdrop-filter:blur(8px);transition:.25s}
+  .pill:hover{border-color:var(--accent);box-shadow:0 0 20px rgba(0,169,255,.25);transform:translateY(-2px)}
 
   /* faq */
-  .faq-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:12px;overflow:hidden}
-  .faq-item summary{cursor:pointer;padding:18px 22px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
-  .faq-item summary::after{content:"+";font-size:1.4rem;color:var(--accent-dark);font-weight:400}
-  .faq-item[open] summary::after{content:"–"}
-  .faq-item .body{padding:0 22px 18px;color:var(--ink-soft);font-size:.97rem}
+  .faq-item{background:var(--glass);border:1px solid rgba(255,255,255,.08);border-radius:14px;margin-bottom:12px;overflow:hidden;backdrop-filter:blur(8px);transition:border-color .3s}
+  .faq-item[open]{border-color:var(--glass-b)}
+  .faq-item summary{cursor:pointer;padding:19px 24px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:"+";font-size:1.5rem;color:var(--accent);font-weight:400;transition:transform .3s}
+  .faq-item[open] summary::after{transform:rotate(45deg)}
+  .faq-item .body{padding:0 24px 20px;color:var(--mut);font-size:.96rem;animation:faqIn .35s cubic-bezier(.16,1,.3,1)}
+  @keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 
-  /* signup */
-  .signup{background:linear-gradient(165deg,var(--brand-2),var(--brand));color:#fff;text-align:center}
-  .signup h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;margin-bottom:12px}
-  .signup p{color:#c3d2db;max-width:560px;margin:0 auto 30px}
-  .phone-big{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;color:var(--accent);letter-spacing:1px;display:block;margin:18px 0 6px}
-  .phone-big a{color:var(--accent)}
+  /* signup band */
+  .signup{text-align:center;position:relative;overflow:hidden;border-top:1px solid rgba(0,169,255,.15);
+    background:radial-gradient(700px 320px at 50% 120%, rgba(0,169,255,.16), transparent 70%)}
+  .signup h2{font-size:clamp(1.8rem,4.2vw,2.7rem);font-weight:700;margin-bottom:12px;letter-spacing:-.4px}
+  .signup p{color:var(--mut);max-width:560px;margin:0 auto 32px}
+  .phone-big{font-family:'Space Grotesk';font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;letter-spacing:1px;display:block;margin:22px 0 6px}
+  .phone-big a{background:linear-gradient(90deg,#35c3ff,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px rgba(0,169,255,.35))}
 
-  footer{background:#060606;color:#7e929e;padding:34px 0;text-align:center;font-size:.9rem}
-  footer .foot-brand{color:#fff;font-weight:800;letter-spacing:.5px;margin-bottom:6px}
+  footer{border-top:1px solid rgba(255,255,255,.06);color:var(--mut);padding:36px 0;text-align:center;font-size:.9rem}
+  footer .foot-brand{font-family:'Space Grotesk';color:#fff;font-weight:700;letter-spacing:1.5px;margin-bottom:6px}
   footer .foot-brand em{font-style:normal;color:var(--accent)}
 
+  /* scroll reveal — hidden ONLY when the anim system is confirmed active (html.anim) */
+  html.anim .rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)}
+  html.anim .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html.anim .rv{opacity:1;transform:none;transition:none}
+    .hero .drop-ic{animation:none}
+  }
   @media(max-width:760px){
     .nav-links a:not(.btn){display:none}
-    section{padding:48px 0}
+    section{padding:58px 0}
+    .hero{padding:130px 0 70px}
   }
 </style>
 </head>
 <body>
 
-<header>
+<header id="hd">
   <div class="wrap nav">
     <div class="logo">
       <img src="assets/salt-drop-icon.png" alt="Salt Drop logo">
@@ -178,13 +220,14 @@
       <a href="#how">How It Works</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
-      <a class="btn" href="#signup">Get Started</a>
+      <a class="btn sm" href="book.html">Get Started</a>
     </nav>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
+    <img class="drop-ic" src="assets/salt-drop-icon.png" alt="">
     <span class="kicker">Water Softener Salt · Delivered & Filled</span>
     <h1>Never haul a <em>40-lb salt bag</em> again.</h1>
     <p class="sub">We deliver the salt, check your brine tank, and fill it for you — on a simple monthly plan. Soft water, zero effort, no more salt runs.</p>
@@ -192,50 +235,61 @@
       <a class="btn big" href="book.html">Start My Salt Drop</a>
       <a class="btn ghost big" href="sms:+12085894506">Text Us to Sign Up</a>
     </div>
-    <div class="micro">Locally owned & family-run in East Idaho · Cancel anytime · No contracts</div>
+    <div class="stats">
+      <div class="stat"><b>2 min</b><span>to sign up</span></div>
+      <div class="stat"><b>40 lbs</b><span>carried for you</span></div>
+      <div class="stat"><b>$0</b><span>trip fees, ever</span></div>
+      <div class="stat"><b>0</b><span>contracts</span></div>
+    </div>
   </div>
 </section>
 
 <section id="how">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head rv">
       <span class="tag">How it works</span>
       <h2>Set it and forget it — literally.</h2>
       <p>Three steps, then you never think about softener salt again.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="num">1</div><h3>Sign up in 2 minutes</h3><p>Tell us your address and where your softener lives (garage, basement, utility room). That's all we need.</p></div>
-      <div class="step"><div class="num">2</div><h3>We deliver & fill</h3><p>On every visit we show up with fresh salt, check your brine tank level, and top it off to the right level.</p></div>
-      <div class="step"><div class="num">3</div><h3>You enjoy soft water</h3><p>No hauling, no forgetting, no crusty salt bridges, no hard-water scale creeping back into your pipes.</p></div>
+      <div class="card step rv"><div class="num">1</div><h3>Sign up in 2 minutes</h3><p>Tell us your address and where your softener lives (garage, basement, utility room). That's all we need.</p></div>
+      <div class="card step rv" style="transition-delay:.08s"><div class="num">2</div><h3>We deliver & fill</h3><p>On every visit we show up with fresh salt, check your brine tank level, and top it off to the right level.</p></div>
+      <div class="card step rv" style="transition-delay:.16s"><div class="num">3</div><h3>You enjoy soft water</h3><p>No hauling, no forgetting, no crusty salt bridges, no hard-water scale creeping back into your pipes.</p></div>
     </div>
   </div>
 </section>
 
-<section id="pricing" style="padding-top:0">
+<section id="pricing" style="padding-top:10px">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head rv">
       <span class="tag">Pricing</span>
-      <h2>Simple monthly plans</h2>
-      <p>Salt included. No contracts. Cancel or pause anytime with a text.</p>
+      <h2>Simple plans. Salt included.</h2>
+      <p>No contracts. Pause or cancel anytime with a text.</p>
+    </div>
+    <div class="toggle rv">
+      <div class="tg">
+        <button type="button" class="on" data-f="mo">Monthly</button>
+        <button type="button" data-f="eom">Every other month</button>
+      </div>
     </div>
     <div class="plans">
-      <div class="plan">
+      <div class="card plan rv">
         <h3>BASIC</h3>
-        <div class="price">$25<span>/mo</span></div>
+        <div class="price" data-mo="$25" data-eom="$29">$25<span class="unit">/mo</span></div>
         <ul>
-          <li>Monthly refill visit</li>
+          <li>Refill visit every cycle</li>
           <li>1 bag of salt included</li>
           <li>Brine tank level check</li>
           <li>Text before every visit</li>
         </ul>
         <a class="btn" href="book.html?plan=Basic">Choose Basic</a>
       </div>
-      <div class="plan feature">
+      <div class="card plan feature rv" style="transition-delay:.08s">
         <span class="flag">Most Popular</span>
         <h3>FAMILY</h3>
-        <div class="price">$35<span>/mo</span></div>
+        <div class="price" data-mo="$35" data-eom="$39">$35<span class="unit">/mo</span></div>
         <ul>
-          <li>Monthly refill visit</li>
+          <li>Refill visit every cycle</li>
           <li>Up to 2 bags of salt included</li>
           <li>Brine tank check + salt-bridge break-up</li>
           <li>Text before every visit</li>
@@ -243,11 +297,11 @@
         </ul>
         <a class="btn" href="book.html?plan=Family">Choose Family</a>
       </div>
-      <div class="plan">
+      <div class="card plan rv" style="transition-delay:.16s">
         <h3>LARGE HOME</h3>
-        <div class="price">$45<span>/mo</span></div>
+        <div class="price" data-mo="$45" data-eom="$49">$45<span class="unit">/mo</span></div>
         <ul>
-          <li>Monthly refill visit</li>
+          <li>Refill visit every cycle</li>
           <li>Up to 3 bags of salt included</li>
           <li>Brine tank check + salt-bridge break-up</li>
           <li>Text before every visit</li>
@@ -256,34 +310,33 @@
         <a class="btn" href="book.html?plan=Large">Choose Large</a>
       </div>
     </div>
-    <div class="eom">💧 <b>Light salt user?</b> Get the same service <b>every other month</b> instead — $29 / $39 / $49 per visit. Half the visits, same soft water.</div>
-    <p class="price-note">Extra bags just $10 each, any plan. On a well or have multiple softeners? <a href="sms:+12085894506">Text us</a> for a custom plan.</p>
+    <p class="price-note rv">Extra bags just $10 each, any plan. On a well or have multiple softeners? <a href="sms:+12085894506">Text us</a> for a custom plan.</p>
   </div>
 </section>
 
-<section class="why">
+<section id="why" style="padding-top:10px">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head rv">
       <span class="tag">Why Salt Drop</span>
       <h2>The chore nobody misses.</h2>
       <p>Hard water is rough on East Idaho homes. Keeping the softener fed shouldn't be your job.</p>
     </div>
     <div class="why-grid">
-      <div class="why-card"><div class="ic">🏋️</div><h3>Bags are heavy</h3><p>40 pounds from the store cart, to the car, to the basement. We carry them so you don't have to.</p></div>
-      <div class="why-card"><div class="ic">🧠</div><h3>Easy to forget</h3><p>An empty brine tank quietly turns your water hard again. We track it, so it never runs dry.</p></div>
-      <div class="why-card"><div class="ic">🚰</div><h3>Protects your home</h3><p>Consistent soft water means no scale in pipes and appliances, softer laundry, and spot-free dishes.</p></div>
-      <div class="why-card"><div class="ic">🤝</div><h3>Local & family-run</h3><p>A real East Idaho family business — the same friendly face at your door every visit.</p></div>
+      <div class="card why-card rv"><div class="ic">🏋️</div><h3>Bags are heavy</h3><p>40 pounds from the store cart, to the car, to the basement. We carry them so you don't have to.</p></div>
+      <div class="card why-card rv" style="transition-delay:.07s"><div class="ic">🧠</div><h3>Easy to forget</h3><p>An empty brine tank quietly turns your water hard again. We track it, so it never runs dry.</p></div>
+      <div class="card why-card rv" style="transition-delay:.14s"><div class="ic">🚰</div><h3>Protects your home</h3><p>Consistent soft water means no scale in pipes and appliances, softer laundry, and spot-free dishes.</p></div>
+      <div class="card why-card rv" style="transition-delay:.21s"><div class="ic">🤝</div><h3>Local & family-run</h3><p>A real East Idaho family business — the same friendly face at your door every visit.</p></div>
     </div>
   </div>
 </section>
 
-<section id="area">
+<section id="area" style="padding-top:10px">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head rv">
       <span class="tag">Service Area</span>
       <h2>Proudly serving East Idaho</h2>
     </div>
-    <div class="area-pills">
+    <div class="area-pills rv">
       <span class="pill">Rigby</span>
       <span class="pill">Idaho Falls</span>
       <span class="pill">Ammon</span>
@@ -293,28 +346,28 @@
   </div>
 </section>
 
-<section id="faq" style="padding-top:0">
-  <div class="wrap" style="max-width:760px">
-    <div class="sec-head">
+<section id="faq" style="padding-top:10px">
+  <div class="wrap" style="max-width:780px">
+    <div class="sec-head rv">
       <span class="tag">FAQ</span>
       <h2>Questions, answered</h2>
     </div>
-    <details class="faq-item"><summary>Do I need to be home for the refill?</summary><div class="body">Nope. Most softeners are in a garage or utility room — we'll arrange access that works for you (garage code, side door, etc.) and text you when we're done.</div></details>
-    <details class="faq-item"><summary>What kind of salt do you use?</summary><div class="body">Standard high-purity water softener salt pellets — the same trusted brands you'd buy at the hardware store, without the hauling.</div></details>
-    <details class="faq-item"><summary>Monthly or every other month?</summary><div class="body">Your choice. Most homes do monthly. Light salt users can pick every-other-month visits at a per-visit price — same service, half the trips.</div></details>
-    <details class="faq-item"><summary>What if my tank doesn't need salt this month?</summary><div class="body">We still check it — and if it's full, your included bags roll over. You never pay for salt you didn't need.</div></details>
-    <details class="faq-item"><summary>Is there a contract?</summary><div class="body">No contracts, ever. Pause or cancel anytime with a text.</div></details>
-    <details class="faq-item"><summary>How do I pay?</summary><div class="body">Simple billing by card, Venmo, or cash — set up once on your first visit, then it's automatic.</div></details>
+    <details class="faq-item rv"><summary>Do I need to be home for the refill?</summary><div class="body">Nope. Most softeners are in a garage or utility room — we'll arrange access that works for you (garage code, side door, etc.) and text you when we're done.</div></details>
+    <details class="faq-item rv"><summary>What kind of salt do you use?</summary><div class="body">Standard high-purity water softener salt pellets — the same trusted brands you'd buy at the hardware store, without the hauling.</div></details>
+    <details class="faq-item rv"><summary>Monthly or every other month?</summary><div class="body">Your choice. Most homes do monthly. Light salt users can pick every-other-month visits at a per-visit price — same service, half the trips.</div></details>
+    <details class="faq-item rv"><summary>What if my tank doesn't need salt this month?</summary><div class="body">We still check it — and if it's full, your included bags roll over. You never pay for salt you didn't need.</div></details>
+    <details class="faq-item rv"><summary>Is there a contract?</summary><div class="body">No contracts, ever. Pause or cancel anytime with a text.</div></details>
+    <details class="faq-item rv"><summary>How do I pay?</summary><div class="body">Simple billing by card, Venmo, or cash — set up once on your first visit, then it's automatic.</div></details>
   </div>
 </section>
 
 <section class="signup" id="signup">
-  <div class="wrap">
+  <div class="wrap rv">
     <h2>Ready to drop the salt run?</h2>
     <p>Sign up online in two minutes — or text us your address and which plan you want, and we'll confirm your first fill within the day.</p>
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap"><a class="btn big" href="book.html">Sign Up Online</a><a class="btn ghost big" href="sms:+12085894506">📲 Text Us Instead</a></div>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap"><a class="btn big" href="book.html">Sign Up Online</a><a class="btn ghost big" href="sms:+12085894506">📲 Text Us Instead</a></div>
     <span class="phone-big"><a href="tel:+12085894506">(208) 589-4506</a></span>
-    <div style="color:#8ba1ad;font-size:.95rem">Locally owned & family-run in East Idaho</div>
+    <div style="color:var(--mut);font-size:.95rem">Locally owned & family-run in East Idaho</div>
   </div>
 </section>
 
@@ -326,5 +379,32 @@
   </div>
 </footer>
 
+<script>
+// header state on scroll
+const hd = document.getElementById('hd');
+addEventListener('scroll', () => hd.classList.toggle('sc', scrollY > 24), {passive: true});
+
+// scroll reveal — progressive enhancement: only hide content once the observer is confirmed available,
+// and force-reveal anything still hidden after 3s so content can never be lost
+if ('IntersectionObserver' in window) {
+  document.documentElement.classList.add('anim');
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold: .12, rootMargin: '0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  setTimeout(() => document.querySelectorAll('.rv:not(.in)').forEach(el => el.classList.add('in')), 3000);
+}
+
+// pricing toggle
+document.querySelectorAll('.tg button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.tg button').forEach(x => x.classList.remove('on'));
+  b.classList.add('on');
+  const eom = b.dataset.f === 'eom';
+  document.querySelectorAll('.plan .price').forEach(p => {
+    p.childNodes[0].nodeValue = eom ? p.dataset.eom : p.dataset.mo;
+    p.querySelector('.unit').textContent = eom ? '/visit' : '/mo';
+  });
+}));
+</script>
 </body>
 </html>
